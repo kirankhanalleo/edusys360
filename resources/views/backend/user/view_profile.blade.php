@@ -13,14 +13,14 @@
 <div class="main-content">
   <div class="col-12">
     <div class="card">
-      <a href="" class="add-user btn rounded-pill btn-primary mb-5">Edit Profile</a>
+      <a href="{{ route('edit.profile') }}" class="add-user btn rounded-pill btn-primary mb-5">Edit Profile</a>
       <div class="card-header" style="padding-top:30px;">
         <h4>Viewing as: {{ $user->name }}</h4>
       </div>
       <div class=" author-box">
         <div class="card-body">
           <div class="author-box-center">
-            <img alt="image" src="{{ (!empty($user->image))?url('assets/userimages/profileimg'.$user->image): url('assets/userimages/no-image.jpg') }}" class="rounded-circle author-box-picture">
+            <img alt="image" src="{{ (!empty($user->profileimg))?url('assets/userimages/profileimg/'.$user->profileimg): url('assets/userimages/no-image.jpg') }}" class="rounded-circle author-box-picture">
             <div class="clearfix" style="padding-bottom:10px;"></div>
             <div class="author-box-name">
               <p class="text-muted" style="padding-bottom: 15px;"><small>{{ $user->name }}</small></p>

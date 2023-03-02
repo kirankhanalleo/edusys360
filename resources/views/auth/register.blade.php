@@ -46,17 +46,22 @@
                   </div>
                     <div class="form-group">
                       <label for="password">Password</label>
+                      <label style="float:right;">(Must be 8 characters long, contain atleast one uppercase, one lowercase and one numeric value)</label>
                       <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator"
                         name="password">
                       <div id="pwindicator" class="pwindicator">
                         <div class="bar"></div>
                         <div class="label"></div>
-                      </div><br>
+                      </div>
+                      @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                      @enderror
+                      <br>
                     <div class="form-group">
                       <label for="password_confirmation" >Confirm Password</label>
                       <input id="password_confirmation" type="password" class="form-control" name="password_confirmation">
                       @error('password_confirmation')
-                      <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </div>
                   </div>

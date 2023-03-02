@@ -20,11 +20,16 @@
   <div class="loader"></div>
   <div id="app">
     <section class="section">
-      <div class="container mt-5">
+      <div class="container py-4 mt-5">
         <div class="row">
-          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+          <div class="col-10 offset-1">
             <div class="card card-primary">
-              <div class="card-header">
+              <div class="row">
+              <div class="col-5 mx-4 my-4">
+                <img src="{{ asset('assets/img/banner/login-banner.png') }}" style="height:400px;" alt="">
+              </div>
+              <div class="col-6 px-4 py-2">
+              <div class="card-header py-4">
                 <h4 style="text-align: center;">EDUSYS 360 - COMPLETE COLLEGE MANAGEMENT SYSTEM</h4>
               </div>
               <div class="card-body">
@@ -65,12 +70,10 @@
                 </form>
               </div>
             </div>
-            <div class="mt-5 text-muted text-center">
-              Register new account here! <a href="{{ route('register') }}">Register</a>
-            </div>
           </div>
         </div>
       </div>
+    </div>
     </section>
   </div>
   <!-- General JS Scripts -->{{ asset('') }}

@@ -132,7 +132,7 @@
     </li>
     <li class="dropdown"><a href="#" data-toggle="dropdown"
         class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
-        <img alt="image" src="{{ (!empty($user->image))?url('assets/userimages/profileimg'.$user->image): url('assets/userimages/no-image.jpg') }}"
+        <img alt="image" src="{{ (!empty($user->profileimg))?url('assets/userimages/profileimg/'.$user->profileimg): url('assets/userimages/no-image.jpg') }}"
           class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
       <div class="dropdown-menu dropdown-menu-right pullDown">
         <a href="{{ route('view.profile') }}" class="dropdown-item has-icon"> <i class="far
