@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend_Controllers\UserControllers;
 use App\Http\Controllers\Backend_Controllers\ProfileController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\StudentClassController;
+use App\Http\Controllers\Backend_Controllers\Configure_System\AcademicYearController;
+use App\Models\AcademicYear;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -43,10 +45,19 @@ Route::prefix('profile')->group(function () {
 });
 //All Routes for System Configuration
 Route::prefix('configure')->group(function () {
+    //Student Class All Routes
     Route::get('/student/class/view', [StudentClassController::class, 'ViewClass'])->name('view.class');
     Route::get('/student/class/add', [StudentClassController::class, 'AddClass'])->name('add.class');
     Route::post('student/class/create', [StudentClassController::class, 'CreateClass'])->name('create.class');
     Route::get('student/class/edit/{id}', [StudentClassController::class, 'EditClass'])->name('edit.class');
     Route::post('/student/class/update/{id}', [StudentClassController::class, 'UpdateClass'])->name('update.class');
     Route::get('/student/class/delete/{id}', [StudentClassController::class, 'DeleteClass'])->name('delete.class');
+
+    //Academic Year All Routes
+    Route::get('/academicyear/view', [AcademicYearController::class, 'ViewYear'])->name('view.year');
+    Route::get('academicyear/add', [AcademicYearController::class, 'AddYear'])->name('add.year');
+    Route::post('academicyear/create', [AcademicYearController::class, 'CreateYear'])->name('create.year');
+    Route::get('/academicyear/edit/{id}', [AcademicYearController::class, 'EditYear'])->name('edit.year');
+    Route::post('/academicyear/update/{id}', [AcademicYearController::class, 'UpdateYear'])->name('update.year');
+    Route::get('/academicyear/delete/{id}', [AcademicYearController::class, 'DeleteYear'])->name('delete.year');
 });

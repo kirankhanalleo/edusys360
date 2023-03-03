@@ -28,6 +28,7 @@
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
           data-feather="settings"></i><span>Configure System</span></a>
         <ul class="dropdown-menu">
+          <li><a class="nav-link" href="{{ route('view.year') }}">Academic Year</a></li>
           <li><a class="nav-link" href="{{ route('view.class') }}">Student Class</a></li>
         </ul>
       </li>
