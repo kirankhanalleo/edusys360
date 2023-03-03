@@ -139,7 +139,7 @@
                                   fa-user"></i> Profile
         </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
           Activities
-        </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-key"></i>
+        </a> <a href="{{route('view.password')}}" class="dropdown-item has-icon"> <i class="fas fa-key"></i>
           Change Password
         </a>
         <div class="dropdown-divider"></div>

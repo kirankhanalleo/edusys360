@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend_Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -44,5 +45,26 @@ class ProfileController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('view.profile')->with($notification);
+    }
+    public function ViewPassword()
+    {
+        return view('backend.user.view_password');
+    }
+    public function UpdatePassword(Request $request)
+    {
+        $validateData = $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|confirmed|min:8|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/',
+        ]);
+        $encryptedPassword = Auth::user()->password;
+        if (Hash::check($request->current_password, $encryptedPassword)) {
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+            Auth::logout();
+            return redirect()->route('login');
+        } else {
+            return redirect()->back();
+        }
     }
 }

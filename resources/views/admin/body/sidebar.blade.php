@@ -1,3 +1,9 @@
+{{-- function to show active sidebar page --}}
+@php
+  $prefix=Request::route()->getprefix();
+  $route=Route::current()->getName();
+@endphp
+
 <div class="main-sidebar sidebar-style-2">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
@@ -7,11 +13,11 @@
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header">Main</li>
-      <li class="dropdown active">
+      <li class="dropdown {{ ($route=='dashboard')?'active':'' }}">
         <a href="{{ route('dashboard') }}" class="nav-link"><i data-feather="home"></i>
           <span>Dashboard</span></a>
       </li>
-      <li class="dropdown">
+      <li class="dropdown {{ ($prefix=='/users')?'active':'' }} ">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
           data-feather="users"></i><span>Manage Users</span></a>
         <ul class="dropdown-menu">
