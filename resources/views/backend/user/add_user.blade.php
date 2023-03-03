@@ -61,7 +61,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <input type="submit" class=" btn btn-success rounded-pill" value="Create new user">
+                            <input type="submit" class=" btn btn-success rounded-pill" value="Create user">
                         </div> <!--End col-md-6 -->
                 </div>
             </form>

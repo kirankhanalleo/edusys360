@@ -5,16 +5,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend_Controllers\UserControllers;
 use App\Http\Controllers\Backend_Controllers\ProfileController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\Backend_Controllers\Configure_System\StudentClassController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -49,4 +40,13 @@ Route::prefix('profile')->group(function () {
     Route::post('/update', [ProfileController::class, 'UpdateProfile'])->name('update.profile');
     Route::get('/password/view', [ProfileController::class, 'ViewPassword'])->name('view.password');
     Route::post('password/update', [ProfileController::class, 'UpdatePassword'])->name('update.password');
+});
+//All Routes for System Configuration
+Route::prefix('configure')->group(function () {
+    Route::get('/student/class/view', [StudentClassController::class, 'ViewClass'])->name('view.class');
+    Route::get('/student/class/add', [StudentClassController::class, 'AddClass'])->name('add.class');
+    Route::post('student/class/create', [StudentClassController::class, 'CreateClass'])->name('create.class');
+    Route::get('student/class/edit/{id}', [StudentClassController::class, 'EditClass'])->name('edit.class');
+    Route::post('/student/class/update/{id}', [StudentClassController::class, 'UpdateClass'])->name('update.class');
+    Route::get('/student/class/delete/{id}', [StudentClassController::class, 'DeleteClass'])->name('delete.class');
 });

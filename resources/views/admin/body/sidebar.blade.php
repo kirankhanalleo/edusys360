@@ -12,7 +12,6 @@
       </a>
     </div>
     <ul class="sidebar-menu">
-      <li class="menu-header">Main</li>
       <li class="dropdown {{ ($route=='dashboard')?'active':'' }}">
         <a href="{{ route('dashboard') }}" class="nav-link"><i data-feather="home"></i>
           <span>Dashboard</span></a>
@@ -25,8 +24,14 @@
           <li><a class="nav-link" href="{{ route('add.user') }}">Add User</a></li>
         </ul>
       </li>
-      <li class="menu-header">User Interface</li>
-      <li class="dropdown">
+      <li class="dropdown {{ ($prefix=='/configure')?'active':'' }} ">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+          data-feather="settings"></i><span>Configure System</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="{{ route('view.class') }}">Student Class</a></li>
+        </ul>
+      </li>
+      {{-- <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Basic
           Components</span></a>
         <ul class="dropdown-menu">
@@ -35,7 +40,7 @@
           <li><a class="nav-link" href="breadcrumb.html">Breadcrumb</a></li>
           <li><a class="nav-link" href="buttons.html">Buttons</a></li>
         </ul>
-      </li>
+      </li> --}}
     </ul>  
   </aside>
 </div>
