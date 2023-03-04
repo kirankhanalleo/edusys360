@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend_Controllers\UserControllers;
 use App\Http\Controllers\Backend_Controllers\ProfileController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\StudentClassController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\AcademicYearController;
+use App\Http\Controllers\Backend_Controllers\Configure_System\FeeCategoryController;
 use App\Models\AcademicYear;
 
 Route::get('/', function () {
@@ -60,4 +61,12 @@ Route::prefix('configure')->group(function () {
     Route::get('/academicyear/edit/{id}', [AcademicYearController::class, 'EditYear'])->name('edit.year');
     Route::post('/academicyear/update/{id}', [AcademicYearController::class, 'UpdateYear'])->name('update.year');
     Route::get('/academicyear/delete/{id}', [AcademicYearController::class, 'DeleteYear'])->name('delete.year');
+
+    //Fee Categories All Routes
+    Route::get('/fee/category/view', [FeeCategoryController::class, 'ViewFeeCategory'])->name('view.fee.category');
+    Route::get('/fee/category/add', [FeeCategoryController::class, 'AddFeeCategory'])->name('add.fee.category');
+    Route::post('fee/category/create', [FeeCategoryController::class, 'CreateFeeCategory'])->name('create.fee.category');
+    Route::get('fee/category/edit/{id}', [FeeCategoryController::class, 'EditFeeCategory'])->name('edit.fee.category');
+    Route::post('fee/category/update/{id}', [FeeCategoryController::class, 'UpdateFeeCategory'])->name('update.fee.category');
+    Route::get('fee/category/delete/{id}', [FeeCategoryController::class, 'DeleteFeeCategory'])->name('delete.fee.category');
 });
