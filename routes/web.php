@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend_Controllers\Configure_System\StudentClassContro
 use App\Http\Controllers\Backend_Controllers\Configure_System\AcademicYearController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\FeeCategoryController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\FeeAmountController;
+use App\Http\Controllers\Backend_Controllers\Configure_System\ExamModelController;
 use App\Models\AcademicYear;
 
 Route::get('/', function () {
@@ -78,4 +79,12 @@ Route::prefix('configure')->group(function () {
     Route::get('fee/amount/edit/{fee_category_id}', [FeeAmountController::class, 'EditFeeAmount'])->name('edit.fee.amount');
     Route::post('fee/amount/update/{fee_category_id}', [FeeAmountController::class, 'UpdateFeeAmount'])->name('update.fee.amount');
     Route::get('fee/amount/details/{fee_category_id}', [FeeAmountController::class, 'FeeAmountDetails'])->name('fee.amount.details');
+
+    //Exam Model All Routes
+    Route::get('/exam/model/view', [ExamModelController::class, 'ViewExamModel'])->name('view.exam.model');
+    Route::get('/exam/model/add', [ExamModelController::class, 'AddExamModel'])->name('add.exam.model');
+    Route::post('/exam/model/create', [ExamModelController::class, 'CreateExamModel'])->name('create.exam.model');
+    Route::get('/exam/model/edit/{id}', [ExamModelController::class, 'EditExamModel'])->name('edit.exam.model');
+    Route::post('/exam/model/update/{id}', [ExamModelController::class, 'UpdateExamModel'])->name('update.exam.model');
+    Route::get('/exam/model/delete/{id}', [ExamModelController::class, 'DeleteExamModel'])->name('delete.exam.model');
 });
