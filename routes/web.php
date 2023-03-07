@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend_Controllers\ProfileController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\StudentClassController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\AcademicYearController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\FeeCategoryController;
+use App\Http\Controllers\Backend_Controllers\Configure_System\FeeAmountController;
 use App\Models\AcademicYear;
 
 Route::get('/', function () {
@@ -69,4 +70,9 @@ Route::prefix('configure')->group(function () {
     Route::get('fee/category/edit/{id}', [FeeCategoryController::class, 'EditFeeCategory'])->name('edit.fee.category');
     Route::post('fee/category/update/{id}', [FeeCategoryController::class, 'UpdateFeeCategory'])->name('update.fee.category');
     Route::get('fee/category/delete/{id}', [FeeCategoryController::class, 'DeleteFeeCategory'])->name('delete.fee.category');
+
+    //Fee Category Amount All Routes
+    Route::get('/fee/amount/view', [FeeAmountController::class, 'ViewFeeAmount'])->name('view.fee.amount');
+    Route::get('/fee/amount/add', [FeeAmountController::class, 'AddFeeAmount'])->name('add.fee.amount');
+    Route::post('fee/amount/create', [FeeAmountController::class, 'CreateFeeAmount'])->name('create.fee.amount');
 });

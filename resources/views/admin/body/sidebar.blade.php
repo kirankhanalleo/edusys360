@@ -31,6 +31,7 @@
           <li><a class="nav-link" href="{{ route('view.year') }}">Academic Year</a></li>
           <li><a class="nav-link" href="{{ route('view.class') }}">Student Class</a></li>
           <li><a class="nav-link" href="{{ route('view.fee.category') }}">Fee Categories</a></li>
+          <li><a class="nav-link" href="{{ route('view.fee.amount') }}">Fee Category Amount</a></li>
         </ul>
       </li>
       {{-- <li class="dropdown">

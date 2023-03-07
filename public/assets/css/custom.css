@@ -7,3 +7,10 @@
     width:130px;
     border:1px solid #EAEBFC;
 }
+/* Add Fee Amount */
+.add-less-btns{
+    padding-top: 30px;
+}
+.add-remove-item{
+    visibility: hidden;
+}
