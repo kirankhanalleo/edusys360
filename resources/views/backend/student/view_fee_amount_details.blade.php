@@ -15,7 +15,7 @@
     <div class="card">
       <a href="{{ route('add.fee.amount') }}" class="add-user btn rounded-pill btn-primary mb-5">Create Fee Amount</a>
       <div class="card-header" style="padding-top:30px;">
-        <h4>Viewing Fee Amount</h4>
+        <h4>Viewing Fee Amount Details</h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -47,20 +47,17 @@
                   <thead>
                     <tr role="row">
                       <th class="sorting" tabindex="0" aria-controls="table-1" rowspan="1" colspan="1"  style="width: 10.698px;">S.N</th>
-                      <th class="sorting" tabindex="0" aria-controls="table-1" rowspan="1" colspan="1"  style="width: 232.698px;">Fee Category</th>
+                      <th class="sorting" tabindex="0" aria-controls="table-1" rowspan="1" colspan="1"  style="width: 232.698px;">Class</th>
                       <th class="sorting" tabindex="0" aria-controls="table-1" rowspan="1" colspan="1"  style="width: 52.698px;">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <!--fetching information as key and data-->
-                    @foreach ( $allData as $key => $amount ) 
+                    @foreach ( $detailsData as $key => $detail ) 
                     <tr role="row" class="odd">
                       <td class="sorting_1">{{ $key+1 }}</td>
-                      <td>{{ $amount['fee_category']['name']}}</td>
-                      <td>
-                        <a href="{{ route('edit.fee.amount',$amount->fee_category_id) }}" class="btn btn-primary">Edit</a>
-                        <a href="{{ route('fee.amount.details',$amount->fee_category_id) }}" class="btn btn-danger ml-1" onMouseOver="this.style.color='#FFFFFF'">Details</a>
-                      </td>
+                      <td>{{ $detail['student_class']['name']}}</td>
+                      <td>{{ $detail->amount }}</td>
                     </tr>
                     @endforeach
                   </tbody>
@@ -70,7 +67,7 @@
             <div class="row">
               <div class="col-sm-12 col-md-5">
                 <div class="dataTables_info" id="table-1_info" role="status" aria-live="polite">
-                  Showing 1 to {{ count($allData) }} of {{ count($allData) }} entries
+                  Showing 1 to {{ count($detailsData) }} of {{ count($detailsData) }} entries
                 </div>
               </div>
               <div class="col-sm-12 col-md-7">
