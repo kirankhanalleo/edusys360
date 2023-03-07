@@ -10,7 +10,9 @@ use App\Http\Controllers\Backend_Controllers\Configure_System\AcademicYearContro
 use App\Http\Controllers\Backend_Controllers\Configure_System\FeeCategoryController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\FeeAmountController;
 use App\Http\Controllers\Backend_Controllers\Configure_System\ExamModelController;
+use App\Http\Controllers\Backend_Controllers\Configure_System\SubjectController;
 use App\Models\AcademicYear;
+use App\Models\SubjectModel;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -87,4 +89,12 @@ Route::prefix('configure')->group(function () {
     Route::get('/exam/model/edit/{id}', [ExamModelController::class, 'EditExamModel'])->name('edit.exam.model');
     Route::post('/exam/model/update/{id}', [ExamModelController::class, 'UpdateExamModel'])->name('update.exam.model');
     Route::get('/exam/model/delete/{id}', [ExamModelController::class, 'DeleteExamModel'])->name('delete.exam.model');
+
+    //Subjects All Routes
+    Route::get('/subjects/view', [SubjectController::class, 'ViewSubjects'])->name('view.subjects');
+    Route::get('subjects/add', [SubjectController::class, 'AddSubjects'])->name('add.subject');
+    Route::post('/subjects/create', [SubjectController::class, 'CreateSubjects'])->name('create.subject');
+    Route::get('subjects/edit/{id}', [SubjectController::class, 'EditSubjects'])->name('edit.subject');
+    Route::post('/subjects/update/{id}', [SubjectController::class, 'UpdateSubjects'])->name('update.subjects');
+    Route::get('/subjects/delete/{id}', [SubjectController::class, 'DeleteSubjects'])->name('delete.subject');
 });
