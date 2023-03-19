@@ -15,25 +15,54 @@
       <li class="dropdown {{ ($route=='dashboard')?'active':'' }}">
         <a href="{{ route('dashboard') }}" class="nav-link"><i data-feather="home"></i>
           <span>Dashboard</span></a>
+      </li> 
+      <li class="dropdown {{ ($prefix=='/academicyear')?'active':'' }} ">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+          data-feather="calendar"></i><span>School Year</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="{{ route('view.year') }}">View Year</a></li>
+          <li><a class="nav-link" href="{{ route('add.year') }}">Add Year</a></li>
+        </ul>
+      </li>
+      <li class="dropdown {{ ($prefix=='/course')?'active':'' }} ">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+          data-feather="book-open"></i><span>Course</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="{{ route('view.subjects') }}">View Subjects</a></li>
+          <li><a class="nav-link" href="{{ route('add.subject') }}">Add Subject</a></li>
+        </ul>
+      </li>
+      <li class="dropdown {{ ($prefix=='/class')?'active':'' }} ">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+          data-feather="grid"></i><span>Classroom</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="{{ route('view.class') }}">View Classes</a></li>
+          <li><a class="nav-link" href="{{ route('add.class') }}">Add Class</a></li>
+          <li><a class="nav-link" href="{{ route('view.assign.subjects') }}">Assign Subjects</a></li>
+        </ul>
+      </li>
+      <li class="dropdown {{ ($prefix=='/exam')?'active':'' }} ">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+          data-feather="file-text"></i><span>Exam</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="{{ route('view.exam.model') }}">View Exam Model</a></li>
+          <li><a class="nav-link" href="{{ route('add.exam.model') }}">Add Exam Model</a></li>
+        </ul>
+      </li>
+      <li class="dropdown {{ ($prefix=='/fee')?'active':'' }} ">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+          data-feather="dollar-sign"></i><span>Fee</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="{{ route('view.fee.category') }}">Fee Categories</a></li>
+          <li><a class="nav-link" href="{{ route('view.fee.amount') }}">Fee Amount</a></li>
+        </ul>
       </li>
       <li class="dropdown {{ ($prefix=='/users')?'active':'' }} ">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
-          data-feather="users"></i><span>Manage Users</span></a>
+          data-feather="users"></i><span>Users</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="{{ route('view.user') }}">View Users</a></li>
           <li><a class="nav-link" href="{{ route('add.user') }}">Add User</a></li>
-        </ul>
-      </li>
-      <li class="dropdown {{ ($prefix=='/configure')?'active':'' }} ">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i
-          data-feather="settings"></i><span>Configure System</span></a>
-        <ul class="dropdown-menu">
-          <li><a class="nav-link" href="{{ route('view.year') }}">Academic Year</a></li>
-          <li><a class="nav-link" href="{{ route('view.class') }}">Student Class</a></li>
-          <li><a class="nav-link" href="{{ route('view.fee.category') }}">Fee Categories</a></li>
-          <li><a class="nav-link" href="{{ route('view.fee.amount') }}">Fee Amount</a></li>
-          <li><a class="nav-link" href="{{ route('view.exam.model') }}">Exam Model</a></li>
-          <li><a class="nav-link" href="{{ route('view.subjects') }}">Manage Subjects</a></li>
         </ul>
       </li>
       {{-- <li class="dropdown">
