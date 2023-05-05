@@ -7,24 +7,14 @@
   <title>Edusys360 - Admin Dashboard</title>
   <!-- Toastr Css File-->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
-  <!-- Custom style CSS -->
-  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-  <link rel='shortcut icon' type='image/x-icon' href="{{ asset('assets/img/favicon.ico') }}" />
+  <!-- MATERIAL ICON -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <!-- CUSTOM STYLESHEET -->
+  <link rel="stylesheet" href="{{ asset('assets/assets/css/dashboard-style.css') }}">
 </head>
 
 <body>
-  <div class="loader"></div>
-  <div id="app">
-    <div class="main-wrapper main-wrapper-1">
-    <!--Header start -->    
-    @include('admin.body.header')
-    <!--Header end -->    
-
+  <div class="container">
     <!---Sidebar Start --->
     @include('admin.body.sidebar')    
     <!---Sidebar End --->
@@ -32,23 +22,11 @@
     <!-- Main Content -->
     @yield('admin')
     <!-- Main Content End-->
-      
-    <!---Footer Start --->
-    @include('admin.body.footer')    
-    <!---Footer End --->   
-      
-    </div>
-  </div>
+  </div>   
   <!-- General JS Scripts -->
-  <script src="{{ asset('assets/js/app.min.js') }}"></script>
-  <!-- JS Libraies -->
-  <script src="{{ asset('assets/bundles/apexcharts/apexcharts.min.js') }}"></script>
-  <!-- Page Specific JS File -->
-  <script src="{{ asset('assets/js/page/index.js') }}"></script>
-  <!-- Template JS File -->
-  <script src="{{ asset('assets/js/scripts.js') }}"></script>
-  <!-- Custom JS File -->
-  <script src="{{ asset('assets/js/custom.js') }}"></script>
+  <script src="{{ asset('assets//assets/js/index.js') }}"></script>
+  <!-- JQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <!-- Toastr JS File -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <!-- SweetAlert2 JS File -->

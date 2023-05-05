@@ -15,6 +15,9 @@ use App\Http\Controllers\Backend_Controllers\Configure_System\SubjectAssignmentC
 use App\Models\AcademicYear;
 use App\Models\SubjectAssignment;
 use App\Models\SubjectModel;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -85,7 +88,8 @@ Route::prefix('fee')->group(function () {
     Route::get('/category/edit/{id}', [FeeCategoryController::class, 'EditFeeCategory'])->name('edit.fee.category');
     Route::post('/category/update/{id}', [FeeCategoryController::class, 'UpdateFeeCategory'])->name('update.fee.category');
     Route::get('/category/delete/{id}', [FeeCategoryController::class, 'DeleteFeeCategory'])->name('delete.fee.category');
-
+});
+Route::prefix('feeamount')->group(function () {
     //Fee Category Amount All Routes
     Route::get('/amount/view', [FeeAmountController::class, 'ViewFeeAmount'])->name('view.fee.amount');
     Route::get('/amount/add', [FeeAmountController::class, 'AddFeeAmount'])->name('add.fee.amount');

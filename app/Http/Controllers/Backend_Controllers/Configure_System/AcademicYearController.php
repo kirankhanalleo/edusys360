@@ -30,7 +30,6 @@ class AcademicYearController extends Controller
             'message' => 'Academic Year Created Successfully!',
             'alert-type' => 'success'
         );
-
         return redirect()->route('view.year')->with($notification);
     }
     public function EditYear($id)

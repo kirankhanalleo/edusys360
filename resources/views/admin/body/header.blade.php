@@ -1,152 +1,53 @@
-<div class="navbar-bg"></div>
-<nav class="navbar navbar-expand-lg main-navbar sticky">
-  <div class="form-inline mr-auto">
-    <ul class="navbar-nav mr-3">
-      <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
-                              collapse-btn"> <i data-feather="align-justify"></i></a></li>
-      <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
-          <i data-feather="maximize"></i>
-        </a></li>
-      <li>
-        <form class="form-inline mr-auto">
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="200">
-            <button class="btn" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </form>
-      </li>
-    </ul>
-  </div>
-  <ul class="navbar-nav navbar-right">
-    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-        class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
-        <span class="badge headerBadge1">
-          6 </span> </a>
-      <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-        <div class="dropdown-header">
-          Messages
-          <div class="float-right">
-            <a href="#">Mark All As Read</a>
-          </div>
+@php
+    $nameArray=explode(" ", $user->name);
+    $firstName = array_shift($nameArray);
+@endphp
+<div class="main-top">
+    <div>
+        <h1>Edusys360 <span class="primary">Admin</span></h1>
+    </div>
+    <div class="top-menu">
+        <button class="menu-btn" id="menu-btn">
+            <span class="material-symbols-sharp">menu</span>
+        </button>
+        <button class="theme-toggler">
+            <span class="material-symbols-sharp active">light_mode</span>
+            <span class="material-symbols-sharp">dark_mode</span>
+        </button>
+        <div class="profile">
+            <div class="info">
+                <p>Hey, <b>Kiran</b></p>
+                <small class="text-muted">{{ $user->userrole }}</small>
+            </div>
+            <div class="profile-picture">
+                <img  src="{{ (!empty($user->profileimg))?url('assets/userimages/profileimg/'.$user->profileimg): url('assets/userimages/no-image.jpg') }}" alt="user" onclick="toggleMenu()" class="user-avatar">
+                <div class="profile-menu-wrap" id="profile-menu">
+                    <div class="profile-menu">
+                        <div class="user-info">
+                            <img  src="{{ (!empty($user->profileimg))?url('assets/userimages/profileimg/'.$user->profileimg): url('assets/userimages/no-image.jpg') }}" alt="user" class="user-avatar">
+                            <h3><b>{{ $user->name }}</b></h3>
+                        </div>
+                        <hr>
+                        <a href="{{ route('view.profile') }}" class="profile-menu-link">
+                            <span class="material-symbols-sharp">account_circle</span>
+                            <p>Profile</p>   
+                        </a>
+                        <a href="{{ route('view.password') }}" class="profile-menu-link">
+                            <span class="material-symbols-sharp">lock</span>
+                            <p>Change Password</p>    
+                        </a>
+                        <a href="#" class="profile-menu-link">
+                            <span class="material-symbols-sharp">settings</span>
+                            <p>Settings</p>    
+                        </a>
+                        <hr>
+                        <a href="{{ route('user.logout') }}" class="profile-menu-link danger">
+                            <span class="material-symbols-sharp">logout</span>
+                            <p>Logout</p>    
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="dropdown-list-content dropdown-list-message">
-          <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-                                      text-white"> <img alt="image" src="{{ asset('assets/img/users/user-1.png') }}" class="rounded-circle">
-            </span> <span class="dropdown-item-desc"> <span class="message-user">John
-                Deo</span>
-              <span class="time messege-text">Please check your mail !!</span>
-              <span class="time">2 Min Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-              <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
-            </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                Smith</span> <span class="time messege-text">Request for leave
-                application</span>
-              <span class="time">5 Min Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-              <img alt="image" src="assets/img/users/user-5.png" class="rounded-circle">
-            </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
-                Ryan</span> <span class="time messege-text">Your payment invoice is
-                generated.</span> <span class="time">12 Min Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-              <img alt="image" src="assets/img/users/user-4.png" class="rounded-circle">
-            </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
-                Smith</span> <span class="time messege-text">hii John, I have upload
-                doc
-                related to task.</span> <span class="time">30
-                Min Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-              <img alt="image" src="assets/img/users/user-3.png" class="rounded-circle">
-            </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
-                Joshi</span> <span class="time messege-text">Please do as specify.
-                Let me
-                know if you have any query.</span> <span class="time">1
-                Days Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-              <img alt="image" src="{{ (!empty($user->image))?url('assets/userimages/profileimg'.$user->image): url('assets/userimages/no-image.jpg') }}">
-            </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                Smith</span> <span class="time messege-text">Client Requirements</span>
-              <span class="time">2 Days Ago</span>
-            </span>
-          </a>
-        </div>
-        <div class="dropdown-footer text-center">
-          <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-        </div>
-      </div>
-    </li>
-    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-        class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
-      </a>
-      <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-        <div class="dropdown-header">
-          Notifications
-          <div class="float-right">
-            <a href="#">Mark All As Read</a>
-          </div>
-        </div>
-        <div class="dropdown-list-content dropdown-list-icons">
-          <a href="#" class="dropdown-item dropdown-item-unread"> <span
-              class="dropdown-item-icon bg-primary text-white"> <i class="fas
-                                          fa-code"></i>
-            </span> <span class="dropdown-item-desc"> Template update is
-              available now! <span class="time">2 Min
-                Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="far
-                                          fa-user"></i>
-            </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
-                Sugiharto</b> are now friends <span class="time">10 Hours
-                Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i
-                class="fas
-                                          fa-check"></i>
-            </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
-              moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
-                Hours
-                Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i
-                class="fas fa-exclamation-triangle"></i>
-            </span> <span class="dropdown-item-desc"> Low disk space. Let's
-              clean it! <span class="time">17 Hours Ago</span>
-            </span>
-          </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="fas
-                                          fa-bell"></i>
-            </span> <span class="dropdown-item-desc"> Welcome to Otika
-              template! <span class="time">Yesterday</span>
-            </span>
-          </a>
-        </div>
-        <div class="dropdown-footer text-center">
-          <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-        </div>
-      </div>
-    </li>
-    <li class="dropdown"><a href="#" data-toggle="dropdown"
-        class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
-        <img alt="image" src="{{ (!empty($user->profileimg))?url('assets/userimages/profileimg/'.$user->profileimg): url('assets/userimages/no-image.jpg') }}"
-          class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
-      <div class="dropdown-menu dropdown-menu-right pullDown">
-        <a href="{{ route('view.profile') }}" class="dropdown-item has-icon"> <i class="far
-                                  fa-user"></i> Profile
-        </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
-          Activities
-        </a> <a href="{{route('view.password')}}" class="dropdown-item has-icon"> <i class="fas fa-key"></i>
-          Change Password
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="{{ route('user.logout') }}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
-          Logout
-        </a>
-      </div>
-    </li>
-  </ul>
-</nav>
+    </div>
+</div>
