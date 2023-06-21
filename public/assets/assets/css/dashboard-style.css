@@ -111,6 +111,9 @@ hr{
 .text-muted{
     color:var(--color-info-dark);
 }
+.disabled-link{
+    pointer-events: none;
+}
 p{
     color: var(--color-dark-variant);
 }
@@ -131,6 +134,28 @@ b{
 } 
 .info{
     color:var(--color-info-dark)
+}
+.icon.add, .icon.remove{
+    border-radius: 0.5rem;
+    height:2.6rem;
+    width:2.6rem;
+    font-size: 2.1rem;
+    padding:3px;
+    margin-top:2rem;
+    cursor: pointer;
+    margin-left: -1rem;
+    margin-right: 1.5rem;
+}
+.icon.add{
+    background-color: var(--color-success);
+    color:var(--color-white);
+}
+.icon.remove{
+    background-color: var(--color-danger);
+    color:var(--color-white);
+}
+.text-danger{
+    color:var(--color-danger);
 }
 button.add, button.create{
     padding:8px 30px;
@@ -399,6 +424,7 @@ main .insights small{
 /* ======RECENT EVENTS============ */
 main .data-table{
     margin-top: 2rem;
+    margin-bottom: 5rem;
 }
 main .data-table h2{
     margin-bottom: 0.8rem;
@@ -463,6 +489,9 @@ main .data-table a{
 .scroll-table{
     max-height:55vh;
     overflow-y: scroll;
+}
+.scroll-card{
+    max-height:50vh;
 }
 .scroll-table::-webkit-scrollbar{
     width: .4vw;
@@ -607,7 +636,7 @@ main .data-table a{
     z-index: 10;
     min-width:55vw;
     max-width:85vh;
-    min-height:50vh;
+    min-height:40vh;
     position: fixed;
     transition: 300ms ease-in-out;
     background: var(--color-white);

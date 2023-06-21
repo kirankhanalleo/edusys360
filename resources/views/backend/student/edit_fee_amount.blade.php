@@ -1,21 +1,23 @@
 @extends('admin.admin_master')
 @section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<div class="main-content">        
-    <div class="col-12 col-md-12 col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <h4>EDIT FEE AMOUNT</h4>
-            </div>
+<main>
+    @include('admin.body.header')
+    <p class="text-muted pt"><b><a href="{{ route('dashboard') }}">Home</a></b> - <a href="{{ route('add.fee.amount') }}">Create Fee Amount</a> </p>
+    <div class="data-table large-table">
+        <div style="display:flex; justify-content:space-between;">
+            <div><h2>Edit Fee Categories Amount</h2></div>
+        </div>
+        <hr>
+        <div class="modal-body scroll-table scroll-card" style="margin-bottom: 1.5rem;">
             <form action="{{ route('update.fee.amount',$editData['0']->fee_category_id) }}" method="post" id="register-form">
                 @csrf
-                <div class="card-body">
-                    <div class="col-md-12">
-                        <div class="add_item">
-                            <div class="form-group">
-                                <label>Fee Category</label>
-                                <span class="text-danger">*</span>
-                                <select class="form-control" name="fee_category_id">
+                <div class="add_item">
+                    <div class="input-form">
+                        <div class="row">
+                            <div class="form-group" style="max-width:95%;">
+                                <h3>Fee Category<span class="danger">*</span></h3>
+                                <select name="fee_category_id">
                                     <option value="" selected disabled>Select Fee Category</option>
                                     @foreach ($fee_categories as $category)
                                         <option value="{{ $category->id }}"{{ ($editData['0']->fee_category_id==$category->id)?"selected":"" }}>{{ $category->name }}</option>
@@ -23,82 +25,94 @@
                                 </select>
                                 @error('fee_category_id')
                                     <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                @enderror    
                             </div>
-                            @foreach ($editData as $edit )
-                            <div class="delete_extra_item" id="delete_extra_item">
-                                <div class="form-row">
-                                    <div class="col-md-5"> 
-                                        <div class="form-group">
-                                            <label>Student Class</label>
-                                            <span class="text-danger">*</span>
-                                            <select class="form-control" name="class_id[]">
-                                                <option value="" selected disabled>Select Class</option>
-                                                @foreach ($student_classes as $class)
-                                                    <option value="{{ $class->id }}"{{ ($edit->class_id==$class->id)?"selected":"" }}>{{ $class->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('class_id')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5"> 
-                                        <div class="form-group">
-                                            <label>Amount</label>
-                                            <span class="text-danger">*</span>
-                                            <input type="text" class="form-control" name="amount[]" value="{{ $edit->amount }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 add-less-btns">
-                                        <span class="btn btn-primary addmore"><i class="fa fa-plus-circle"></i></span>
-                                        <span class="btn btn-danger removeadded"><i class="fa fa-minus-circle"></i></span>
-                                    </div> 
-                                </div>
-                            </div>    
-                            @endforeach
                         </div>
-                        <input type="submit" class=" btn btn-success rounded-pill" value="Update Fee Amount">
+                        @foreach ($editData as $edit )
+                            <div class="delete_extra_item" id="delete_extra_item">
+                                <div class="row">
+                                    <div class="form-group" style="max-width:40%;">
+                                        <h3>Student Class<span class="danger">*</span></h3>
+                                        <select name="class_id[]">
+                                            <option value="" selected disabled>Select Class</option>
+                                            @foreach ($student_classes as $class)
+                                                <option value="{{ $class->id }}"{{ ($edit->class_id==$class->id)?"selected":"" }}>{{ $class->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('class_id')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror   
+                                    </div>
+                                    <div class="form-group" style="max-width:40%;">
+                                        <h3>Amount<span class="danger">*</span></h3>
+                                        <input type="text" name="amount[]" value="{{ $edit->amount }}">   
+                                    </div>
+                                    <div>
+                                        <span class="material-symbols-sharp icon add addmore">
+                                            add
+                                        </span>
+                                        <span class="material-symbols-sharp icon remove removeadded">
+                                            remove
+                                        </span>
+                                    </div>
+                                </div>
+                            </div> 
+                        @endforeach   
+                        </div> 
                     </div>
                 </div>
-            </form>
+                <button type="submit" class="create" style="margin-bottom: 1rem; margin-top:2rem;">Update Fee Amount</button>
+            </form>    
         </div>
     </div>
-</div>
-<div class="add-remove-item col-md-12">
-    <div class="add_extra_item" id="add_extra_item">
-        <div class="delete_extra_item" id="delete_extra_item">
-            <div class="form-row">
-                <div class="col-md-5"> 
-                    <div class="form-group">
-                        <label>Student Class</label>
-                        <span class="text-danger">*</span>
-                        <select class="form-control" name="class_id[]">
-                            <option value="" selected disabled>Select Class</option>
-                            @foreach ($student_classes as $class)
+</main>
+<div style="display: none;">
+    <div class="add-remove-item">
+        <div class="add_extra_item" id="add_extra_item">
+            <div class="delete_extra_item" id="delete_extra_item">
+                <div class="input-form">
+                    <div class="row">
+                        <div class="form-group" style="max-width:40%;">
+                            <h3>Student Class<span class="danger">*</span></h3>
+                            <select name="class_id[]">
+                                <option value="" selected disabled>Select Class</option>
+                                @foreach ($student_classes as $class)
                                 <option value="{{ $class->id }}">{{ $class->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('class_id')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                                @endforeach
+                            </select>
+                            @error('class_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror   
+                        </div>
+                        <div class="form-group" style="max-width:40%;">
+                            <h3>Amount<span class="danger">*</span></h3>
+                            <input type="text" name="amount[]">   
+                        </div>
+                        <div>
+                            <span class="material-symbols-sharp icon add addmore">
+                                add
+                            </span>
+                            <span class="material-symbols-sharp icon remove removeadded">
+                                remove
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-5"> 
-                    <div class="form-group">
-                        <label>Amount</label>
-                        <span class="text-danger">*</span>
-                        <input type="text" class="form-control" name="amount[]">
-                    </div>
-                </div>
-                <div class="col-md-2 pl-3 add-less-btns">
-                    <span class="btn btn-primary addmore"><i class="fa fa-plus-circle"></i></span>
-                    <span class="btn btn-danger removeadded"><i class="fa fa-minus-circle"></i></span>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<style>
+    .container{
+        grid-template-columns: 14rem auto 1rem;
+    }
+    @media screen and (max-width:768px){
+        .container{
+            grid-template-columns: 1fr;
+            width:100%;
+        }
+    }
+</style>
 <script type="text/javascript">
     $(document).ready(function(){
         var count=0;

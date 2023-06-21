@@ -6,10 +6,10 @@
 <aside>
   <div class="top">
       <div class="logo">
-          <a href="{{route('dashboard')}}">
-            <img class="logo" src="{{ asset('assets/assets/images/logo/logo.png') }}" alt="logo">
-          </a>
-          <h2>EDUS<span class="primary">YS360</span></h2>
+            <a href="{{route('dashboard')}}">
+                <img class="logo" src="{{ asset('assets/assets/images/logo/logo.png') }}" alt="logo">
+            </a>
+            <h2>EDUS<span class="primary">YS360</span></h2>
       </div>
       <div class="close" id="close-btn">
           <span class="material-symbols-sharp">close</span>
@@ -32,9 +32,13 @@
           <span class="material-symbols-sharp">nest_multi_room</span>
           <h3>Classroom</h3>
       </a>
+      <a href="{{ route('view.assign.subjects') }}" class="{{ ($prefix=='/assign')?'active':'' }}">
+        <span class="material-symbols-sharp">assignment_add</span>
+        <h3>Assign Subjects</h3>
+      </a>
       <a href="{{ route('view.exam.model') }}" class="{{ ($prefix=='/exam')?'active':'' }}">
           <span class="material-symbols-sharp">quiz</span>
-          <h3>Exam</h3>
+          <h3>Examination</h3>
       </a>
       <a href="{{ route('view.fee.category') }}" class="{{ ($prefix=='/fee')?'active':'' }}" >
           <span class="material-symbols-sharp">category</span>
@@ -43,7 +47,11 @@
       <a href="{{ route('view.fee.amount') }}" class="{{ ($prefix=='/feeamount')?'active':'' }}" >
         <span class="material-symbols-sharp">payments</span>
         <h3>Fee Amounts</h3>
-    </a>
+      </a>
+      <a href="{{ route('view.fee.amount') }}" class="{{ ($prefix=='/feeamount')?'active':'' }}" >
+        <span class="material-symbols-sharp">radar</span>
+        <h3>Designation</h3>
+      </a>
       <a href="{{ route('view.user') }}" class="{{ ($prefix=='/users')?'active':'' }}" >
           <span class="material-symbols-sharp">manage_accounts</span>
           <h3>Users</h3>

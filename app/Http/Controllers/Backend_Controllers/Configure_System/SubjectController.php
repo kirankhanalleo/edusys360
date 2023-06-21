@@ -41,7 +41,7 @@ class SubjectController extends Controller
     {
         $data = SubjectModel::find($id);
         $validateData = $request->validate([
-            'name' => 'required:unique:subject_model,name'
+            'name' => 'required|unique:subject_models,name'
         ]);
         $data->name = $request->name;
         $data->save();

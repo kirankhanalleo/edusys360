@@ -62,13 +62,15 @@ Route::prefix('class')->group(function () {
     Route::get('/edit/{id}', [StudentClassController::class, 'EditClass'])->name('edit.class');
     Route::post('/update/{id}', [StudentClassController::class, 'UpdateClass'])->name('update.class');
     Route::get('/delete/{id}', [StudentClassController::class, 'DeleteClass'])->name('delete.class');
-
-    //Assign Subject All Routes
-    Route::get('/assign/subject/view', [SubjectAssignmentController::class, 'ViewAssignedSubjects'])->name('view.assign.subjects');
-    Route::get('/assign/subject/add', [SubjectAssignmentController::class, 'AddAssignedSubject'])->name('assign.new.subject');
-    Route::post('/assign/subject/create', [SubjectAssignmentController::class, 'CreateAssignedSubject'])->name('create.assigned.subject');
-    Route::get('/assign/subject/edit/{class_id}', [SubjectAssignmentController::class, 'EditAssignedSubject'])->name('edit.assigned.subject');
-    Route::post('/assign/subject/update/{class_id}', [SubjectAssignmentController::class, 'UpdateAssignedSubject'])->name('update.assigned.subject');
+});
+//Assign Subject All Routes
+Route::prefix('assign')->group(function () {
+    Route::get('/subject/view', [SubjectAssignmentController::class, 'ViewAssignedSubjects'])->name('view.assign.subjects');
+    Route::get('/subject/add', [SubjectAssignmentController::class, 'AddAssignedSubject'])->name('assign.new.subject');
+    Route::post('/subject/create', [SubjectAssignmentController::class, 'CreateAssignedSubject'])->name('create.assigned.subject');
+    Route::get('/subject/edit/{class_id}', [SubjectAssignmentController::class, 'EditAssignedSubject'])->name('edit.assigned.subject');
+    Route::post('/subject/update/{class_id}', [SubjectAssignmentController::class, 'UpdateAssignedSubject'])->name('update.assigned.subject');
+    Route::get('/subject/details/{class_id}', [SubjectAssignmentController::class, 'SubjectAssignmentDetails'])->name('assigned.subject.details');
 });
 //Academic Year All Routes
 Route::prefix('academicyear')->group(function () {

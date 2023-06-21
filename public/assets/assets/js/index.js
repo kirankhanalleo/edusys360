@@ -98,7 +98,6 @@ function closeModal(modal) {
     modal.classList.remove("active");
     overlay.classList.remove("active");
 }
-
 // Profile Menu Toggle
 let profileMenu = document.getElementById("profile-menu");
 function toggleMenu() {

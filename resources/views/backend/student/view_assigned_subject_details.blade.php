@@ -2,44 +2,40 @@
 @section('admin')
 <main>
     @include('admin.body.header')
-    <p class="text-muted pt"><b><a href="{{ route('dashboard') }}">Home</a></b> - <a href="{{ route('view.fee.category') }}">Fee Categories</a> </p>
+    <p class="text-muted pt"><b><a href="{{ route('dashboard') }}">Home</a></b> - <a href="{{ route('view.assign.subjects') }}">Assign Subject</a> </p>
     <div class="data-table large-table">
         <div style="display:flex; justify-content:space-between; ">
-            <div><h2>Viewing Fee Categories</h2></div>
+            <div><h2>Subjects Assigned in Class: {{ $detailsData[0]['student_class']['name'] }}</h2></div>
             <div class="searchbar">
                 <input type="text" id="search-input" onkeyup="searchBar()" placeholder="Search" class="searchbar">  
                 <span class="material-symbols-sharp">search</span> 
             </div>
-            <div><button class="add">Add Fee Category</button></div> 
         </div>
         <hr>
         <div class="scroll-table">
             <table  cellspacing="0" cellpadding="0" id="data-table">
                 <thead>
                     <tr>
-                        <th width="10%">S.N</th>
-                        <th width="80%">Fee Categories</th>
-                        <th>Action</th>
+                        <th width="5%">S.N</th>
+                        <th width="55%">Subject</th>
+                        <th width="20%">Full Marks</th>
+                        <th width="20%">Pass Marks</th>
                     </tr>
                     <tbody>
                         <!--Fetching data from database-->
-                        @foreach ($allData as $key=>$category)
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td class="edit-delete">
-                                    <a class="view-btn" title="view" href="#"><span class="material-symbols-sharp">visibility</span></a>
-                                    <a class="edit-btn" title="edit" href="{{ route('edit.fee.category',$category->id) }}"><span class="material-symbols-sharp">edit_square</span></a>
-                                    <a class="delete-btn" title="delete" id="deleteFeeCategory" href="{{ route('delete.fee.category',$category->id) }}"><span class="material-symbols-sharp">delete</span></a>
-                                  </td>
-                            </tr> 
+                        @foreach ( $detailsData as $key => $detail ) 
+                        <tr role="row" class="odd">
+                          <td>{{ $key+1 }}</td>
+                          <td>{{ $detail['subject']['name']}}</td>
+                          <td>{{ $detail->full_marks }}</td>
+                          <td>{{ $detail->pass_marks }}</td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </thead>
             </table>
         </div>
-        
-        <p class="text-muted" id="bottom-text">Showing 1 to {{ count($allData) }} of {{ count($allData) }} entries</p>
+        <p class="text-muted" id="bottom-text">Showing 1 to {{ count($detailsData) }} of {{ count($detailsData) }} entries</p>
     </div>
     <!---MODAL BOX START ---->
     <div class="modal-box" id="modal-box">

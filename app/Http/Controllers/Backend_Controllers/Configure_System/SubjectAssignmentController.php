@@ -81,4 +81,9 @@ class SubjectAssignmentController extends Controller
             return redirect()->route('view.assign.subjects')->with($notification);
         }
     }
+    public function SubjectAssignmentDetails($class_id)
+    {
+        $data['detailsData'] = SubjectAssignment::where('class_id', $class_id)->orderBy('subject_id', 'asc')->get();
+        return view('backend.student.view_assigned_subject_details', $data);
+    }
 }
