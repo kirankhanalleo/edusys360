@@ -14,13 +14,13 @@ class SubjectAssignmentController extends Controller
     {
         // $data['allData'] = SubjectAssignment::all();
         $data['allData'] = SubjectAssignment::select('class_id')->groupBy('class_id')->get();
-        return view('backend.student.view_assigned_subjects', $data);
+        return view('backend.setup.view_assigned_subjects', $data);
     }
     public function AddAssignedSubject()
     {
         $data['subjects'] = SubjectModel::all();
         $data['classes'] = StudentClass::all();
-        return view('backend.student.add_assigned_subject', $data);
+        return view('backend.setup.add_assigned_subject', $data);
     }
     public function CreateAssignedSubject(Request $request)
     {
@@ -47,7 +47,7 @@ class SubjectAssignmentController extends Controller
         $data['editData'] = SubjectAssignment::where('class_id', $class_id)->orderBy('class_id', 'asc')->get();
         $data['subjects'] = SubjectModel::all();
         $data['classes'] = StudentClass::all();
-        return view('backend.student.edit_assigned_subject', $data);
+        return view('backend.setup.edit_assigned_subject', $data);
     }
     public function UpdateAssignedSubject(Request $request, $class_id)
     {
@@ -84,6 +84,6 @@ class SubjectAssignmentController extends Controller
     public function SubjectAssignmentDetails($class_id)
     {
         $data['detailsData'] = SubjectAssignment::where('class_id', $class_id)->orderBy('subject_id', 'asc')->get();
-        return view('backend.student.view_assigned_subject_details', $data);
+        return view('backend.setup.view_assigned_subject_details', $data);
     }
 }

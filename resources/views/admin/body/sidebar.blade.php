@@ -16,51 +16,100 @@
       </div>
   </div>
   <div class="sidebar">
+    <div class="sidebar-menu">
       <a href="{{ route('dashboard') }}" class="{{ ($route=='dashboard')?'active':'' }}">
           <span class="material-symbols-sharp">home</span>
           <h3>Dashboard</h3>
       </a>
-      <a href="{{ route('view.year') }}" class="{{ ($prefix=='/academicyear')?'active':'' }}">
-          <span class="material-symbols-sharp">calendar_month</span>
-          <h3>School Year</h3>
+    </div>
+    <!-- USER MANAGEMENT -->
+    @if(Auth::user()->role=='Admin')
+    <div class="sidebar-menu">
+      <a href="#" class="toggle-btn {{ ($prefix=='/users')?'active':'' }}">
+        <span class="material-symbols-sharp">manage_accounts</span>
+        <h3>Manage Users</h3>    
+        <span class="material-symbols-sharp expand-btn">expand_more</span>
       </a>
-      <a href="{{ route('view.subjects') }}" class="{{ ($prefix=='/course')?'active':'' }}">
-          <span class="material-symbols-sharp">library_books</span>
+      <div class="sub-menu">
+        <a href="{{ route('view.user') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>View Users</h3>
+        </a>
+        <a href="{{ route('add.user') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Add User</h3>
+        </a>
+      </div>
+    </div>
+    @endif
+    <!-- SYSTEM MANAGEMENT -->
+    <div class="sidebar-menu">
+      <a href="#" class="toggle-btn {{ ($prefix=='/system')?'active':'' }}">
+          <span class="material-symbols-sharp">widgets</span>
+          <h3>Manage System</h3>
+          <span class="material-symbols-sharp expand-btn">expand_more</span>
+      </a>
+      <div class="sub-menu">
+        <a href="{{ route('view.year') }}">
+            <span class="material-symbols-sharp">chevron_right</span>
+            <h3>School Year</h3>
+        </a>
+        <a href="{{ route('view.subjects') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
           <h3>Course</h3>
-      </a>
-      <a href="{{ route('view.class') }}" class="{{ ($prefix=='/class')?'active':'' }}">
-          <span class="material-symbols-sharp">nest_multi_room</span>
+        </a>
+        <a href="{{ route('view.class') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
           <h3>Classroom</h3>
-      </a>
-      <a href="{{ route('view.assign.subjects') }}" class="{{ ($prefix=='/assign')?'active':'' }}">
-        <span class="material-symbols-sharp">assignment_add</span>
-        <h3>Assign Subjects</h3>
-      </a>
-      <a href="{{ route('view.exam.model') }}" class="{{ ($prefix=='/exam')?'active':'' }}">
-          <span class="material-symbols-sharp">quiz</span>
-          <h3>Examination</h3>
-      </a>
-      <a href="{{ route('view.fee.category') }}" class="{{ ($prefix=='/fee')?'active':'' }}" >
-          <span class="material-symbols-sharp">category</span>
+          </a>
+        <a href="{{ route('view.assign.subjects') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Assign Subjects</h3>
+        </a>
+        <a href="{{ route('view.exam.model') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Exam</h3>
+        </a>
+        <a href="{{ route('view.fee.category') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
           <h3>Fee Categories</h3>
+        </a>
+        <a href="{{ route('view.fee.amount') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Fee Amounts</h3>
+        </a>
+        <a href="{{ route('view.designation') }}">
+          <span class="material-symbols-sharp">chevron_right</span>            
+          <h3>Designation</h3>
+        </a>
+      </div>
+    </div>
+    <!-- STUDENT MANAGEMENT -->
+    <div class="sidebar-menu">
+      <a href="#" class="toggle-btn {{ ($prefix=='/student')?'active':'' }}">
+        <span class="material-symbols-sharp">school</span>
+        <h3>Manage Student</h3>    
+        <span class="material-symbols-sharp expand-btn">expand_more</span>
       </a>
-      <a href="{{ route('view.fee.amount') }}" class="{{ ($prefix=='/feeamount')?'active':'' }}" >
-        <span class="material-symbols-sharp">payments</span>
-        <h3>Fee Amounts</h3>
-      </a>
-      <a href="{{ route('view.fee.amount') }}" class="{{ ($prefix=='/feeamount')?'active':'' }}" >
-        <span class="material-symbols-sharp">radar</span>
-        <h3>Designation</h3>
-      </a>
-      <a href="{{ route('view.user') }}" class="{{ ($prefix=='/users')?'active':'' }}" >
-          <span class="material-symbols-sharp">manage_accounts</span>
-          <h3>Users</h3>
-          <span class="count">3</span>
-      </a>
-      <a href="{{ route('user.logout') }}">
-          <span class="material-symbols-sharp">logout</span>
-          <h3>Sign Out</h3>
-      </a>
+      <div class="sub-menu">
+        <a href="{{ route('view.student.registration') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Register Student</h3>
+        </a>
+      </div>
+    </div> 
+    <a href="{{ route('user.logout') }}">
+      <span class="material-symbols-sharp">logout</span>
+      <h3>Sign Out</h3>
+    </a>
   </div>
   <div  id="overlay"></div>
 </aside>
+<!-- CUSTOM JS -->
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('.toggle-btn').click(function(){
+          $(this).next('.sub-menu').slideToggle();
+      });
+  });
+</script>

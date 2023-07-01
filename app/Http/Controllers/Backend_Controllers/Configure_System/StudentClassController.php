@@ -11,11 +11,11 @@ class StudentClassController extends Controller
     public function ViewClass()
     {
         $data['allData'] = StudentClass::all();
-        return view('backend.student.view_class', $data);
+        return view('backend.setup.view_class', $data);
     }
     public function AddClass()
     {
-        return view('backend.student.add_class');
+        return view('backend.setup.add_class');
     }
     public function CreateClass(Request $request)
     {
@@ -36,7 +36,7 @@ class StudentClassController extends Controller
     public function EditClass($id)
     {
         $editData = StudentClass::find($id);
-        return view('backend.student.edit_class', compact('editData'));
+        return view('backend.setup.edit_class', compact('editData'));
     }
     public function UpdateClass(Request $request, $id)
     {

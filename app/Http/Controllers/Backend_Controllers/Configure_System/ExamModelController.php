@@ -11,11 +11,11 @@ class ExamModelController extends Controller
     public function ViewExamModel()
     {
         $data['allData'] = ExamModel::all();
-        return view('backend.student.view_exam_model', $data);
+        return view('backend.setup.view_exam_model', $data);
     }
     public function AddExamModel()
     {
-        return view('backend.student.add_exam_model');
+        return view('backend.setup.add_exam_model');
     }
     public function CreateExamModel(Request $request)
     {
@@ -35,7 +35,7 @@ class ExamModelController extends Controller
     public function EditExamModel($id)
     {
         $editData = ExamModel::find($id);
-        return view('backend.student.edit_exam_model', compact('editData'));
+        return view('backend.setup.edit_exam_model', compact('editData'));
     }
     public function UpdateExamModel(Request $request, $id)
     {

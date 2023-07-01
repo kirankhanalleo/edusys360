@@ -11,11 +11,11 @@ class FeeCategoryController extends Controller
     public function ViewFeeCategory()
     {
         $data['allData'] = FeeCategory::all();
-        return view('backend.student.view_fee_category', $data);
+        return view('backend.setup.view_fee_category', $data);
     }
     public function AddFeeCategory()
     {
-        return view('backend.student.add_fee_category');
+        return view('backend.setup.add_fee_category');
     }
     public function CreateFeeCategory(Request $request)
     {
@@ -35,7 +35,7 @@ class FeeCategoryController extends Controller
     public function EditFeeCategory($id)
     {
         $editData = FeeCategory::find($id);
-        return view('backend.student.edit_fee_category', compact('editData'));
+        return view('backend.setup.edit_fee_category', compact('editData'));
     }
     public function UpdateFeeCategory(Request $request, $id)
     {

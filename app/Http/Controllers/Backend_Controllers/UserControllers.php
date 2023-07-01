@@ -11,7 +11,7 @@ class UserControllers extends Controller
     public function ViewUser()
     {
         //importing data as array from database
-        $data['allData'] = User::all();
+        $data['allData'] = User::where('userrole', 'Admin')->get();
         //returning view page with the received data
         return view('backend.user.view_user', $data);
     }
@@ -24,11 +24,12 @@ class UserControllers extends Controller
         $validateData = $request->validate([
             'email' => 'required|unique:users',
             'name' => 'required',
-            'userrole' => 'required|in:Admin,Accountant',
+            // 'userrole' => 'required|in:Admin,Accountant',
             'password' => 'required|min:8|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/'
         ]);
         $data = new User();
-        $data->userrole = $request->userrole;
+        $data->userrole = 'Admin';
+        $data->role = $request->role;
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = bcrypt($request->password);

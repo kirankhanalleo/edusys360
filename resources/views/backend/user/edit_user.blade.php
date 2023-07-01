@@ -16,8 +16,8 @@
                                         <label>Select Role</label>
                                         <select class="form-control" name="userrole" id="userrole" required="">
                                             <option diabled>Select Role</option>
-                                            <option value="Admin" {{ ($editData->userrole=="Admin"?"selected":"") }}>Admin</option>
-                                            <option value="Accountant" {{ ($editData->userrole=="Accountant"?"selected":"") }} ">Accountant</option>
+                                            <option value="Admin" {{ ($editData->role=="Admin"?"selected":"") }}>Admin</option>
+                                            <option value="User" {{ ($editData->role=="User"?"selected":"") }} >User</option>
                                         </select>
                                     </div>
                                 </div> <!--End col-md-6 -->

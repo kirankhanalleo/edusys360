@@ -11,11 +11,11 @@ class SubjectController extends Controller
     public function ViewSubjects()
     {
         $data['allData'] = SubjectModel::all();
-        return view('backend.student.view_subjects', $data);
+        return view('backend.setup.view_subjects', $data);
     }
     public function AddSubjects()
     {
-        return view('backend.student.add_subjects');
+        return view('backend.setup.add_subjects');
     }
     public function CreateSubjects(Request $request)
     {
@@ -35,7 +35,7 @@ class SubjectController extends Controller
     public function EditSubjects($id)
     {
         $editData = SubjectModel::find($id);
-        return view('backend.student.edit_subjects', compact('editData'));
+        return view('backend.setup.edit_subjects', compact('editData'));
     }
     public function UpdateSubjects(Request $request, $id)
     {

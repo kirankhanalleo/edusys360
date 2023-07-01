@@ -62,7 +62,26 @@ const userSearchBar = () => {
         }
     }
 };
+//Searchbar for students
+const studentSearchBar = () => {
+    let filter = document.getElementById("search-input").value.toUpperCase();
+    let dataTable = document.getElementById("student-table");
+    let tr = dataTable.getElementsByTagName("tr");
 
+    for (var i = 0; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName("td")[2];
+
+        if (td) {
+            let textValue = td.textContent || td.innerHTML;
+
+            if (textValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+};
 //Modal ShowHide
 const openModalButtons = document.querySelectorAll("[data-modal-target]");
 const closeModalButtons = document.querySelectorAll("[data-close-button]");

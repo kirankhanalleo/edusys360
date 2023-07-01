@@ -16,7 +16,7 @@
         </button>
         <div class="profile">
             <div class="info">
-                <p>Hey, <b>Kiran</b></p>
+                <p>Hey, <b>{{ $firstName }}</b></p>
                 <small class="text-muted">{{ $user->userrole }}</small>
             </div>
             <div class="profile-picture">

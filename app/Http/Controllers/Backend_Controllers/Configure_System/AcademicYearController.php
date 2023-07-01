@@ -11,11 +11,11 @@ class AcademicYearController extends Controller
     public function ViewYear()
     {
         $data['allData'] = AcademicYear::all();
-        return view('backend.student.view_year', $data);
+        return view('backend.setup.view_year', $data);
     }
     public function AddYear()
     {
-        return view('backend.student.add_year');
+        return view('backend.setup.add_year');
     }
     public function CreateYear(Request $request)
     {
@@ -35,7 +35,7 @@ class AcademicYearController extends Controller
     public function EditYear($id)
     {
         $editData = AcademicYear::find($id);
-        return view('backend.student.edit_year', compact('editData'));
+        return view('backend.setup.edit_year', compact('editData'));
     }
     public function UpdateYear(Request $request, $id)
     {

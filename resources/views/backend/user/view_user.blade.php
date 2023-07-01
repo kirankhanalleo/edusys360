@@ -19,8 +19,8 @@
                     <tr>
                         <th>S.N</th>
                         <th width="20%">Role</th>
-                        <th width="30%">Name</th>
-                        <th width="30%">Email</th>
+                        <th>Name</th>
+                        <th>Email</th>
                         <th width="10%">Action</th>
                     </tr>
                     <tbody>
@@ -28,7 +28,7 @@
                         @foreach ($allData as $key=>$user)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $user->userrole }}</td>
+                                <td>{{ $user->role }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td class="edit-delete">
@@ -61,10 +61,10 @@
                     <div class="row">
                         <div class="form-group">
                             <h3>User Role<span class="danger">*</span></h3>
-                            <select name="userrole" id="userrole">
+                            <select name="role" id="role">
                                 <option value="" >Select Role</option>
                                 <option value="Admin">Admin</option>
-                                <option value="Accountant">Accountant</option>
+                                <option value="User">User</option>
                             </select>
                             @error('usertype')
                                 <p class="error danger">{{ $message }}</p>
