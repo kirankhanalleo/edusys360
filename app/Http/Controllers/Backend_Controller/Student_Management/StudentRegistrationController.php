@@ -35,6 +35,14 @@ class StudentRegistrationController extends Controller
         $data['allData'] = StudentAssignment::where('year_id', $req->year_id)->where('class_id', $req->class_id)->get();
         return view('backend.student.view_student', $data);
     }
+    public function ViewStudentDetails($student_id)
+    {
+        $data['academicYear'] = AcademicYear::all();
+        $data['class'] = StudentClass::all();
+        $data['scholorship'] = StudentPrivilege::all();
+        $data['editData'] = StudentAssignment::with(['getStudent', 'getStudentDiscount'])->where('student_id', $student_id)->first();
+        return view('backend.student.view_student_details', $data);
+    }
     public function CreateStudentRegistration(Request $request)
     {
         DB::transaction(function () use ($request) {

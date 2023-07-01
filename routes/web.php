@@ -123,6 +123,7 @@ Route::prefix('system')->group(function () {
 //Student Registration All Routes
 Route::prefix('student')->group(function () {
     Route::get('/view', [StudentRegistrationController::class, 'ViewStudentRegistration'])->name('view.student.registration');
+    Route::get('/view/{student_id}', [StudentRegistrationController::class, 'ViewStudentDetails'])->name('view.student.details');
     Route::post('/create', [StudentRegistrationController::class, 'CreateStudentRegistration'])->name('create.student.registration');
     Route::get('/list/display', [StudentRegistrationController::class, 'DisplayStudentList'])->name('show.list');
     Route::get('/edit/{student_id}', [StudentRegistrationController::class, 'EditStudentDetails'])->name('edit.student');
