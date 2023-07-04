@@ -96,6 +96,32 @@
           <span class="material-symbols-sharp">chevron_right</span>
           <h3>Register Student</h3>
         </a>
+        <a href="{{ route('view.admission.fee') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Admission Fee</h3>
+        </a>
+        <a href="{{ route('view.monthly.fee') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Monthly Fee</h3>
+        </a>
+        <a href="{{ route('view.exam.fee') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Exam Fee</h3>
+        </a>
+      </div>
+    </div> 
+    <!-- EMPLOYEE MANAGEMENT-->
+    <div class="sidebar-menu">
+      <a href="#" class="toggle-btn {{ ($prefix=='/employee')?'active':'' }}">
+        <span class="material-symbols-sharp">group</span>
+        <h3>Manage Employee</h3>    
+        <span class="material-symbols-sharp expand-btn">expand_more</span>
+      </a>
+      <div class="sub-menu">
+        <a href="{{ route('view.student.registration') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Register Employee</h3>
+        </a>
       </div>
     </div> 
     <a href="{{ route('user.logout') }}">
