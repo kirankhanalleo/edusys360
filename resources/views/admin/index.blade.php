@@ -1,6 +1,5 @@
 @extends('admin.admin_master')
 @section('admin')
-
 <main>
     <!---Header Start -->
     @include('admin.body.header')
@@ -11,7 +10,7 @@
             <div class="middle">
                 <div class="left">
                     <h3>Total Students</h3>
-                    <h1>900</h1>
+                    <h1>{{ count($students) }}</h1>
                 </div>
             </div> 
             <small class="text-muted">Academic Year 2080</small>  
@@ -90,7 +89,7 @@
                   <small class="text-muted">Academic Year 2080</small>
               </div>
               <h5 class="success">+20%</h5>
-              <h3>75</h3>
+              <h3>{{ count($students) }}</h3>
           </div>
       </div>
       <!--END OF STUDENTS -->
@@ -104,7 +103,7 @@
                   <small class="text-muted">Academic Year 2080</small>
               </div>
               <h5 class="success">+20%</h5>
-              <h3>20</h3>
+              <h3>{{ count($employee) }}</h3>
           </div>
       </div>
       <!--END OF TEACHERS -->

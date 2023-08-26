@@ -69,6 +69,26 @@ const studentSearchBar = () => {
     let tr = dataTable.getElementsByTagName("tr");
 
     for (var i = 0; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName("td")[3];
+
+        if (td) {
+            let textValue = td.textContent || td.innerHTML;
+
+            if (textValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+};
+//Searchbar for employee
+const employeeSearchBar = () => {
+    let filter = document.getElementById("search-input").value.toUpperCase();
+    let dataTable = document.getElementById("employee-table");
+    let tr = dataTable.getElementsByTagName("tr");
+
+    for (var i = 0; i < tr.length; i++) {
         let td = tr[i].getElementsByTagName("td")[2];
 
         if (td) {

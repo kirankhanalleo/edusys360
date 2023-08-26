@@ -1,5 +1,8 @@
 {{-- function to show active sidebar page --}}
 @php
+  // use Illuminate\Support\Facades\Request;
+  // use Illuminate\Support\Facades\Route;
+  // use Illuminate\Support\Facades\Auth;
   $prefix=Request::route()->getprefix();
   $route=Route::current()->getName();
 @endphp
@@ -118,7 +121,37 @@
         <span class="material-symbols-sharp expand-btn">expand_more</span>
       </a>
       <div class="sub-menu">
-        <a href="{{ route('view.student.registration') }}">
+        <a href="{{ route('view.employee') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Register Employee</h3>
+        </a>
+        <a href="{{ route('view.employee.salary') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>View Salary</h3>
+        </a>
+        <a href="{{ route('view.employee.leave') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Manage Leave</h3>
+        </a>
+        <a href="{{ route('view.employee.attendance') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Attendance Record</h3>
+        </a>
+        <a href="{{ route('view.employee.monthly.salary') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Employee Salary</h3>
+        </a>
+      </div>
+    </div> 
+    <!-- Exam Management-->
+    <div class="sidebar-menu">
+      <a href="#" class="toggle-btn {{ ($prefix=='/exam')?'active':'' }}">
+        <span class="material-symbols-sharp">quiz</span>
+        <h3>Manage Exams</h3>    
+        <span class="material-symbols-sharp expand-btn">expand_more</span>
+      </a>
+      <div class="sub-menu">
+        <a href="{{ route('view.employee') }}">
           <span class="material-symbols-sharp">chevron_right</span>
           <h3>Register Employee</h3>
         </a>

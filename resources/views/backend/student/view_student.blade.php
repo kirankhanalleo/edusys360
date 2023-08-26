@@ -43,7 +43,7 @@
         </div>
         <hr>
         <div class="scroll-table" id="student-table">
-                <table  cellspacing="0" cellpadding="0" id="data-table">
+            <table  cellspacing="0" cellpadding="0">
                     <thead>
                         <tr>
                             <th width="5%">S.N</th>

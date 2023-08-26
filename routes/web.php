@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend_Controller\Employee_Management\EmployeeLeaveController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend_Controllers\UserControllers;
 use App\Http\Controllers\Backend_Controllers\ProfileController;
@@ -18,12 +17,13 @@ use App\Http\Controllers\Backend_Controller\Student_Management\StudentRegistrati
 use App\Http\Controllers\Backend_Controller\Student_Management\AdmissionFeeController;
 use App\Http\Controllers\Backend_Controller\Student_Management\MonthlyFeeController;
 use App\Http\Controllers\Backend_Controller\Student_Management\ExamFeeController;
-use App\Models\AcademicYear;
-use App\Models\SubjectAssignment;
-use App\Models\SubjectModel;
-use App\Models\Designation;
-use App\Models\User;
+use App\Http\Controllers\Backend_Controller\Employee_Management\EmployeeRegistrationController;
+use App\Http\Controllers\Backend_Controller\Employee_Management\EmployeeSalaryController;
+use App\Http\Controllers\Backend_Controller\Employee_Management\EmployeeAttendanceController;
+use App\Http\Controllers\Backend_Controller\Employee_Management\EmployeeMonthlySalaryController;
 
+use App\Models\Employee;
+use App\Models\Students;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -35,10 +35,11 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin.index');
+        $data['students'] = Students::all();
+        $data['employee'] = Employee::all();
+        return view('admin.index', $data);
     })->name('dashboard');
 });
-
 Route::get('/user/logout', [UserController::class, 'Logout'])->name('user.logout');
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('users')->group(function () {
@@ -148,5 +149,37 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/exam/fee/view/class', [ExamFeeController::class, 'ViewExamFeeByClass'])->name('view.exam.fee.by.class');
         Route::get('/exam/fee/view/payslip', [ExamFeeController::class, 'ViewExamFeePaySlip'])->name('exam.fee.payslip');
     });
+    //Employee Management ALl Routes
+    Route::prefix('employee')->group(function () {
+        Route::get('/view', [EmployeeRegistrationController::class, 'ViewEmployee'])->name('view.employee');
+        Route::post('/register', [EmployeeRegistrationController::class, 'RegisterEmployee'])->name('create.employee.registration');
+        Route::get('/edit/{id}', [EmployeeRegistrationController::class, 'EditEmployee'])->name('edit.employee.registration');
+        Route::post('/update/{id}', [EmployeeRegistrationController::class, 'UpdateEmployeeDetails'])->name('update.employee.registration');
+
+        //Employee Salary All Routes
+        Route::get('/salary/view', [EmployeeSalaryController::class, 'ViewEmployeeSalary'])->name('view.employee.salary');
+        Route::get('/salary/increase/{id}', [EmployeeSalaryController::class, 'IncreaseEmployeeSalary'])->name('increase.employee.salary');
+        Route::post('/salary/increase/save/{id}', [EmployeeSalaryController::class, 'SaveIncreasedSalary'])->name('increase.employee.salary.save');
+        Route::get('/salary/view/details{id}', [EmployeeSalaryController::class, 'ViewSalaryDetails'])->name('view.salary.details');
+
+        //Employee Leave All Routes
+        Route::get('/leave/view', [EmployeeLeaveController::class, 'ViewEmployeeLeave'])->name('view.employee.leave');
+        Route::post('/leave/create', [EmployeeLeaveController::class, 'CreateEmployeeLeave'])->name('create.employee.leave');
+        Route::get('/leave/edit/{id}', [EmployeeLeaveController::class, 'EditEmployeeLeave'])->name('edit.employee.leave');
+        Route::post('/leave/update/{id}', [EmployeeLeaveController::class, 'UpdateEmployeeLeave'])->name('update.employee.leave');
+        Route::get('/leave/delete/{id}', [EmployeeLeaveController::class, 'DeleteEmployeeLeave'])->name('delete.employee.leave');
+
+        //Employee Attendance All Routes
+        Route::get('/attendance/view', [EmployeeAttendanceController::class, 'ViewEmployeeAttendance'])->name('view.employee.attendance');
+        Route::get('/attendance/add', [EmployeeAttendanceController::class, 'AddEmployeeAttendance'])->name('add.employee.attendance');
+        Route::post('/attendance/save', [EmployeeAttendanceController::class, 'CreateEmployeeAttendance'])->name('create.employee.attendance');
+        Route::get('/attendance/edit/{date}', [EmployeeAttendanceController::class, 'EditEmployeeAttendance'])->name('edit.employee.attendance');
+        Route::post('/attendance/update', [EmployeeAttendanceController::class, 'UpdateEmployeeAttendance'])->name('update.employee.attendance');
+        Route::get('/attendance/view/details/{date}', [EmployeeAttendanceController::class, 'ViewEmployeeAttendanceDetails'])->name('view.employee.attendance.details');
+
+        //Employee Salary All Routes
+        Route::get('/monthly/salary/view', [EmployeeMonthlySalaryController::class, 'ViewEmployeeMonthlySalary'])->name('view.employee.monthly.salary');
+        Route::get('/monthly/salary/get', [EmployeeMonthlySalaryController::class, 'GetEmployeeMonthlySalary'])->name('get.employee.monthly.salary');
+        Route::get('/monthly/salary/view/payslip/{emp_id}', [EmployeeMonthlySalaryController::class, 'ViewEmployeeMonthlySalaryPaySlip'])->name('employee.monthly.salary.payslip');
+    });
 });
-//All Routes for User Management

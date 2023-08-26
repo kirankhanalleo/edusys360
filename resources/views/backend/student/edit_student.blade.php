@@ -195,3 +195,17 @@
     }
 </style>
 @endsection
+{{-- Jquery Ajax --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+{{-- js function to show image on upload --}}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#profileimg').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#viewImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
