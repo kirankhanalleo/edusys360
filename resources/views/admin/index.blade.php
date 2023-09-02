@@ -21,10 +21,10 @@
             <div class="middle">
                 <div class="left">
                     <h3>Total Income</h3>
-                    <h1>Rs. 25000</h1>
+                    <h1>15000</h1>
                 </div>
             </div> 
-            <small class="text-muted">This Month</small>  
+            <small class="text-muted">This Year</small>  
         </div>
         <!-- END OF INCOME -->
         <div class="expenses">

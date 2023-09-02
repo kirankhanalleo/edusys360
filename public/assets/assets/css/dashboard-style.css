@@ -238,6 +238,9 @@ button.create:hover{
     position: absolute;
     right:3px;
 }
+.display-none{
+    display: none;
+}
 /* ================ PROFILE MENU============ */
 .profile-menu-wrap{
     position: absolute;

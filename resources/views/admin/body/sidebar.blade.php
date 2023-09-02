@@ -151,9 +151,45 @@
         <span class="material-symbols-sharp expand-btn">expand_more</span>
       </a>
       <div class="sub-menu">
-        <a href="{{ route('view.employee') }}">
+        <a href="{{ route('add.exam.marks') }}">
           <span class="material-symbols-sharp">chevron_right</span>
-          <h3>Register Employee</h3>
+          <h3>Add Exam Marks</h3>
+        </a>
+      </div>
+    </div> 
+    <!-- Finance Management -->
+    <div class="sidebar-menu">
+      <a href="#" class="toggle-btn {{ ($prefix=='/finance')?'active':'' }}">
+        <span class="material-symbols-sharp">payments</span>
+        <h3>Manage Finance</h3>    
+        <span class="material-symbols-sharp expand-btn">expand_more</span>
+      </a>
+      <div class="sub-menu">
+        <a href="{{ route('view.student.fee') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Student Fee</h3>
+        </a>
+        <a href="{{ route('view.finance.employee.salary') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Employee Salary</h3>
+        </a>
+        <a href="{{ route('view.miscellaneous.cost') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Miscellaneous Cost</h3>
+        </a>
+      </div>
+    </div> 
+    <!-- Reporting & Analytics Management -->
+    <div class="sidebar-menu">
+      <a href="#" class="toggle-btn {{ ($prefix=='/analytics')?'active':'' }}">
+        <span class="material-symbols-sharp">monitoring</span>
+        <h3>Report & Analytics</h3>    
+        <span class="material-symbols-sharp expand-btn">expand_more</span>
+      </a>
+      <div class="sub-menu">
+        <a href="{{ route('view.profit') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Account Report</h3>
         </a>
       </div>
     </div> 

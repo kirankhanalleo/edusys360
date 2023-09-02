@@ -69,7 +69,9 @@ const studentSearchBar = () => {
     let tr = dataTable.getElementsByTagName("tr");
 
     for (var i = 0; i < tr.length; i++) {
-        let td = tr[i].getElementsByTagName("td")[3];
+        let td =
+            tr[i].getElementsByTagName("td")[2] ||
+            tr[i].getElementsByTagName("td")[3];
 
         if (td) {
             let textValue = td.textContent || td.innerHTML;

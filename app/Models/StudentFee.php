@@ -4,12 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Students;
-use App\Models\StudentClass;
-use App\Models\AcademicYear;
-use App\Models\StudentPrivilege;
 
-class StudentAssignment extends Model
+class StudentFee extends Model
 {
     public function getStudent()
     {
@@ -26,5 +22,9 @@ class StudentAssignment extends Model
     public function getStudentDiscount()
     {
         return $this->belongsTo(StudentPrivilege::class, 'id', 'student_assignment_id');
+    }
+    public function getFeeCategory()
+    {
+        return $this->belongsTo(FeeCategory::class, 'fee_category_id', 'id');
     }
 }
