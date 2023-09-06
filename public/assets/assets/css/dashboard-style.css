@@ -157,7 +157,7 @@ b{
 .text-danger{
     color:var(--color-danger);
 }
-button.add, button.create{
+.add, .create{
     padding:8px 30px;
     color:var(--color-white);
     border-radius: 40px;
@@ -167,19 +167,19 @@ button.add, button.create{
     line-height:1.5;
     transition: all 0.3s ease 0s;
 }
-button.add:hover, button.create:hover{
+.add:hover, .create:hover{
     cursor:pointer;
 }
-button.add{
+.add{
     background-color: var(--color-primary);
 }
-button.create{
+.create{
     background-color: var(--color-success);
 }
-button.add:hover{
+.add:hover{
     background-color:var(--color-success) ;
 }
-button.create:hover{
+.create:hover{
     background-color: var(--color-danger);
 }
 .create.user{
@@ -305,7 +305,7 @@ button.create:hover{
 }
 /*================= ASIDE ===================*/
 aside{
-    height:100vh;
+    min-height:100vh;
     z-index:3;
     background: var(--color-white);
 }
@@ -330,7 +330,7 @@ aside .close{
 aside .sidebar{
     display: flex;
     flex-direction: column;
-    height:86vh;
+    /* height:100vh; */
     position: relative;
     top:2rem;
 }
@@ -514,6 +514,10 @@ main .data-table a{
 }
 .scroll-table{
     max-height:55vh;
+    overflow-y: scroll;
+}
+.large-scroll-table{
+    max-height:60vh;
     overflow-y: scroll;
 }
 .scroll-card{
@@ -808,7 +812,7 @@ main .data-table a{
         width:18rem;
         z-index:3;
         box-shadow: 1rem 3rem 4rem var(--color-light);
-        height:100vh;
+        min-height:100vh;
         padding-right: var(--card-padding);
         display: none;
         animation: showMenu 400ms ease forwards;

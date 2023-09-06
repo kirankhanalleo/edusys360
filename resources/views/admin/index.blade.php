@@ -21,10 +21,10 @@
             <div class="middle">
                 <div class="left">
                     <h3>Total Income</h3>
-                    <h1>15000</h1>
+                    <h1>{{ $income }}</h1>
                 </div>
             </div> 
-            <small class="text-muted">This Year</small>  
+            <small class="text-muted">Academic Year 2080</small>  
         </div>
         <!-- END OF INCOME -->
         <div class="expenses">
@@ -32,10 +32,10 @@
             <div class="middle">
                 <div class="left">
                     <h3>Total Expenses</h3>
-                    <h1>Rs. 2500</h1>
+                    <h1>{{ (int)$expense }}</h1>
                 </div>
             </div> 
-            <small class="text-muted">This Month</small>  
+            <small class="text-muted">Academic Year 2080</small>  
         </div>
         <!-- END OF EXPENSES -->
     </div>
@@ -88,7 +88,7 @@
                   <h3>NEW STUDENTS</h3>
                   <small class="text-muted">Academic Year 2080</small>
               </div>
-              <h5 class="success">+20%</h5>
+              <h5 class="success">+100%</h5>
               <h3>{{ count($students) }}</h3>
           </div>
       </div>
@@ -102,7 +102,7 @@
                   <h3>TOTAL TEACHERS</h3>
                   <small class="text-muted">Academic Year 2080</small>
               </div>
-              <h5 class="success">+20%</h5>
+              <h5 class="success">+100%</h5>
               <h3>{{ count($employee) }}</h3>
           </div>
       </div>
@@ -116,8 +116,8 @@
                   <h3>TOTAL STAFFS</h3>
                   <small class="text-muted">Academic Year 2080</small>
               </div>
-              <h5 class="success">+20%</h5>
-              <h3>10</h3>
+              <h5 class="success">+100%</h5>
+              <h3>{{ count($employee) }}</h3>
           </div>
       </div>
       <!--END OF STAFFS -->

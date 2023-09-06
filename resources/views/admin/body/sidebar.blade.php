@@ -155,6 +155,10 @@
           <span class="material-symbols-sharp">chevron_right</span>
           <h3>Add Exam Marks</h3>
         </a>
+        <a href="{{ route('add.grade.point') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Add Grade Point</h3>
+        </a>
       </div>
     </div> 
     <!-- Finance Management -->
@@ -190,6 +194,10 @@
         <a href="{{ route('view.profit') }}">
           <span class="material-symbols-sharp">chevron_right</span>
           <h3>Account Report</h3>
+        </a>
+        <a href="{{ route('view.marksheet') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Student Marksheet</h3>
         </a>
       </div>
     </div> 

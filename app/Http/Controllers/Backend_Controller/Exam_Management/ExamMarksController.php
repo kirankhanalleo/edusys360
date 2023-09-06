@@ -20,4 +20,33 @@ class ExamMarksController extends Controller
         $data['exam_model'] = ExamModel::all();
         return view('backend.exam.marks_management.add_exam_marks', $data);
     }
+    public function CreateStudentExamMarks(Request $request)
+    {
+        $studentCount = $request->student_id;
+        // dd($studentCount)->toArray();
+        if ($studentCount) {
+            for ($i = 0; $i < count($request->student_id); $i++) {
+                $data = new StudentExamMarks();
+                $data->year_id = $request->year_id;
+                $data->exam_id = $request->exam_id;
+                $data->class_id = $request->class_id;
+                $data->subject_id = $request->subject_id;
+                $data->student_id = $request->student_id[$i];
+                $data->reg_id = $request->reg_id[$i];
+                $data->marks = $request->marks[$i];
+                $data->save();
+            }
+            $notification = array(
+                'message' => 'Student Marks Added Successfully!',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = array(
+                'message' => 'Sorry! Student Marks Cannot be Inserted.',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+    }
 }
