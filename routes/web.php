@@ -200,8 +200,11 @@ Route::prefix('/exam')->group(function () {
     //Marks Management All Routes
     Route::get('/marks/add', [ExamMarksController::class, 'AddExamMarks'])->name('add.exam.marks');
     Route::post('/marks/create', [ExamMarksController::class, 'CreateStudentExamMarks'])->name('create.student.exam.marks');
+    Route::post('/marks/update', [ExamMarksController::class, 'UpdateStudentExamMarks'])->name('update.student.exam.marks');
+    Route::get('/marks/edit', [ExamMarksController::class, 'EditStudentExamMarks'])->name('edit.exam.marks');
     Route::get('/marks/getsubject', [PrimaryController::class, 'GetSubject'])->name('class.get.subject');
     Route::get('/marks/getstudents', [PrimaryController::class, 'GetStudents'])->name('class.get.students');
+    Route::get('/marks/editstudentsmarks', [ExamMarksController::class, 'EditStudentsMarks'])->name('edit.student.marks');
 
     //Gradepoint All Routes
     Route::get('/gradepoint/add', [GradePointController::class, 'AddGradePoint'])->name('add.grade.point');

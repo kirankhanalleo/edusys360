@@ -147,13 +147,17 @@
     <div class="sidebar-menu">
       <a href="#" class="toggle-btn {{ ($prefix=='/exam')?'active':'' }}">
         <span class="material-symbols-sharp">quiz</span>
-        <h3>Manage Exams</h3>    
+        <h3>Manage Marks</h3>    
         <span class="material-symbols-sharp expand-btn">expand_more</span>
       </a>
       <div class="sub-menu">
         <a href="{{ route('add.exam.marks') }}">
           <span class="material-symbols-sharp">chevron_right</span>
-          <h3>Add Exam Marks</h3>
+          <h3>Add Student Marks</h3>
+        </a>
+        <a href="{{ route('edit.exam.marks') }}">
+          <span class="material-symbols-sharp">chevron_right</span>
+          <h3>Edit Student Marks</h3>
         </a>
         <a href="{{ route('add.grade.point') }}">
           <span class="material-symbols-sharp">chevron_right</span>

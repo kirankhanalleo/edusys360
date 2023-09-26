@@ -135,7 +135,7 @@ b{
 .info{
     color:var(--color-info-dark)
 }
-.icon.add, .icon.remove{
+.icon.addmore, .icon.remove{
     border-radius: 0.5rem;
     height:2.6rem;
     width:2.6rem;
@@ -146,7 +146,7 @@ b{
     margin-left: -1rem;
     margin-right: 1.5rem;
 }
-.icon.add{
+.icon.addmore{
     background-color: var(--color-success);
     color:var(--color-white);
 }

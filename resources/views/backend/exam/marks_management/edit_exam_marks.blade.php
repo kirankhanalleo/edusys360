@@ -2,11 +2,11 @@
 @section('admin')
 <main>
     @include('admin.body.header')
-    <p class="text-muted pt"><b><a href="{{ route('dashboard') }}">Home</a></b> - <a href="{{ route('add.exam.marks') }}">Student Obtained Marks Entry</a> </p>
-    <form method="post" action="{{ route('create.student.exam.marks') }}">
+    <p class="text-muted pt"><b><a href="{{ route('dashboard') }}">Home</a></b> - <a href="{{ route('edit.exam.marks') }}">Student Obtained Marks Edit</a> </p>
+    <form method="post" action="{{ route('update.student.exam.marks') }}">
         @csrf    
     <div class="data-table large-table" style="margin-bottom:0rem; padding-bottom:2rem; border-bottom:3px solid #2384B4;">
-            <div><h2>Student Obtained Marks Entry</h2></div>
+            <div><h2>Edit Student Obtained Marks </h2></div>
             <hr>
            
             <div class="row" style="padding-top:1.5rem;">
@@ -69,7 +69,7 @@
 
                         </tbody>
                 </table>
-                <button type="submit" class="add">Submit</button>
+                <button type="submit" class="add">Update</button>
             </form>
             </div>
         </div>
@@ -117,9 +117,9 @@ $(function(){
         var subject_id=$('#subject_id').val();
 
         $.ajax({
-            url:"{{ route('class.get.students') }}",
+            url:"{{ route('edit.student.marks') }}",
             type:"GET",
-            data:{'year_id':year_id,'class_id':class_id},
+            data:{'year_id':year_id,'class_id':class_id,'subject_id':subject_id,'exam_id':exam_id},
             success: function(data) {
                 $('#marks-generate').removeClass('display-none');
                 var html='';
@@ -129,7 +129,7 @@ $(function(){
                         '<td>'+v.get_student.reg_id+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"> <input type="hidden" name="reg_id[]" value="'+v.get_student.reg_id+'"> </td>'+
                         '<td>'+v.get_student.name+'</td>'+
                         '<td>'+v.get_student.father_name+'</td>'+
-                        '<td width="20%"> <input type="text" style="max-width:5vw; font-weight:600; border:2px solid #2384B4; padding:5px; border-radius:3px; background:transparent; text-align:center;" name="marks[]"></td>'+
+                        '<td width="20%"> <input type="text" style="max-width:5vw; font-weight:600; border:2px solid #2384B4; padding:5px; border-radius:3px; background:transparent; text-align:center;" name="marks[]" value="'+v.marks+'"></td>'+
                     '</tr>';
                 });
                 html =$('#marks-entry-tr').html(html);

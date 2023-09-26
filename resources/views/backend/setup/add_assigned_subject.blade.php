@@ -1,6 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<!--JQUERY AJAX CDN-->
+<script src="{{ asset('assets/assets/js/jquery-3.7.1.min.js') }}"></script>
 <main>
     @include('admin.body.header')
     <p class="text-muted pt"><b><a href="{{ route('dashboard') }}">Home</a></b> - <a href="{{ route('view.assign.subjects') }}">Assign Subjects</a> </p>
@@ -50,7 +51,7 @@
                                 <input type="text" name="pass_marks[]">   
                             </div>
                             <div>
-                                <span class="material-symbols-sharp icon add addmore">
+                                <span class="material-symbols-sharp icon addmore">
                                     add
                                 </span>
                             </div>
@@ -89,7 +90,7 @@
                         <input type="text" name="pass_marks[]">   
                     </div>
                     <div>
-                        <span class="material-symbols-sharp icon add addmore">
+                        <span class="material-symbols-sharp icon addmore">
                             add
                         </span>
                         <span class="material-symbols-sharp icon remove removeadded">

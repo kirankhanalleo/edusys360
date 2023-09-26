@@ -12,7 +12,8 @@
   <!-- CUSTOM STYLESHEET -->
   <link rel="stylesheet" href="{{ asset('assets/assets/css/dashboard-style.css') }}">
   <!-- JQUERY AJAX -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="{{ asset('assets/assets/js/jquery-3.7.1.min.js') }}"></script>
+
 </head>
 
 <body>
@@ -27,9 +28,7 @@
     <!-- Main Content End-->
   </div>   
   <!-- General JS Scripts -->
-  <script src="{{ asset('assets//assets/js/index.js') }}"></script>
-  <!-- JQuery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="{{ asset('assets/assets/js/index.js') }}"></script>
   <!-- Toastr JS File -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <!-- SweetAlert2 JS File -->

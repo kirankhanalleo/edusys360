@@ -195,9 +195,11 @@
     }
 </style>
 @endsection
-{{-- Jquery Ajax --}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-{{-- js function to show image on upload --}}
+<!-- Jquery Ajax -->
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> --}}
+<script src="{{ asset('assets/assets/js/jquery-3.7.1.min.js') }}"></script>
+
+<!-- js function to show image on upload -->
 <script type="text/javascript">
     $(document).ready(function(){
         $('#profileimg').change(function(e){

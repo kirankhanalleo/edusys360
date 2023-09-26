@@ -28,4 +28,7 @@ class PrimaryController extends Controller
 
         return response()->json($allData);
     }
+    public function EditStudentsMarks()
+    {
+    }
 }

@@ -58,7 +58,6 @@
                     </div>
                 </div>
             </div>
-           
         </div>
         <script src="{{ asset('assets/assets/js/bootstrap.min.js') }}"></script>        
     </body>
